@@ -36,18 +36,18 @@
 
 typedef struct
 {
-    int registerSelect;
-    int enable;
+    int registerSelect; // GPIO Port the R/S-Pin is connected to
+    int enable;         // GPIO Port the E-Pin is connected to
 
-    int D4;
+    int D4; // the GPIO Port(s) for the Pins D4, D5, D6 and D7 are connected to
     int D5;
     int D6;
     int D7;
 
-    int cols;
-    int rows;
+    int cols; // how many columns the display has
+    int rows; // how many rows the display has
 
-    int pulseDelay;
+    int pulseDelay; // delay to send next 4-Bytes (3-5 should do)
 
 } hd44780;
 
@@ -70,8 +70,15 @@ typedef enum
     CHARACTER_MODE 
 } modes;
 
+
+/*
+ * initalizes the hd44780 header to our default port configuration
+ **/
 void hd44780_setDefaultPins(hd44780 *toDefault);
 
+/*
+
+ * */
 void hd44780_initalizeDisplay(hd44780 *header, int initGpio);
 
 void hd44780_writeBytes(hd44780 *header, int byte, int mode);
@@ -85,6 +92,7 @@ void hd44780_printString(hd44780 *header, char *string);
 void hd44780_clearDisplay(hd44780 *header);
 
 void hd44780_printInt32(hd44780 *header, int val, int base);
+
 
 
 #endif // HD44780_H_

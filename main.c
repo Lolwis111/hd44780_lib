@@ -15,12 +15,6 @@ int main()
 
     hd44780_initalizeDisplay(&header, 1);
 
-    hd44780_writeBytes(&header, 0x33, 0);
-    hd44780_writeBytes(&header, 0x32, 0);
-    hd44780_writeBytes(&header, 0x28, 0);
-    hd44780_writeBytes(&header, 0x0C, 0);
-    hd44780_writeBytes(&header, 0x0F, 0);
-
     while(1)
     {
         hd44780_clearDisplay(&header);

@@ -38,6 +38,12 @@ void hd44780_initalizeDisplay(hd44780 *header, int gpioInit)
 
     pinMode(header->registerSelect, OUTPUT);
     pinMode(header->enable, OUTPUT);
+
+    hd44780_writeBytes(header, 0x33, 0);
+    hd44780_writeBytes(header, 0x32, 0);
+    hd44780_writeBytes(header, 0x28, 0);
+    hd44780_writeBytes(header, 0x0C, 0);
+    hd44780_writeBytes(header, 0x0F, 0);
 }
 
 static void hd44780_pulse(hd44780 *header)
